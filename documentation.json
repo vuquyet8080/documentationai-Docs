@@ -1,0 +1,74 @@
+{
+  "name": "Zila Documentation",
+  "initialRoute": "introduction",
+  "primaryColor": "#040404",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              }
+            ]
+          },
+          {
+            "group": "Products",
+            "icon": "package",
+            "pages": [
+              {
+                "title": "Product Portfolio",
+                "path": "products",
+                "icon": "box"
+              }
+            ]
+          },
+          {
+            "group": "Professional Resources",
+            "icon": "users",
+            "pages": [
+              {
+                "title": "Training",
+                "path": "training",
+                "icon": "book-open"
+              },
+              {
+                "title": "Ordering",
+                "path": "ordering",
+                "icon": "shopping-cart"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "openapi": "openapi.yaml"
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  }
+}

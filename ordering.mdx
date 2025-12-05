@@ -1,0 +1,100 @@
+---
+title: Ordering Process
+description: How to order Zila products directly from dental professionals
+---
+
+## Ordering Overview
+
+Streamlined ordering process designed for dental professionals. Place orders directly and receive products quickly with our dedicated professional services.
+
+<Columns cols={2}>
+  <Card title="Online Portal" icon="globe" href="#">
+    Secure online ordering system.
+  </Card>
+  <Card title="Direct Support" icon="phone" href="#">
+    Professional account management.
+  </Card>
+</Columns>
+
+## Order Placement
+
+Simple steps to place your Zila product orders.
+
+<Tabs>
+  <Tab title="New Orders" icon="plus">
+    <Steps>
+      <Step title="Login" icon="log-in">
+        Access your professional account.
+      </Step>
+      <Step title="Select Products" icon="shopping-cart">
+        Browse and add items to cart.
+      </Step>
+      <Step title="Checkout" icon="credit-card">
+        Complete payment and shipping.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Reorder" icon="refresh-cw">
+    <CodeGroup tabs="Quick Reorder,Custom Order">
+      ```javascript
+// Quick reorder
+const reorder = {
+  previousOrder: 'load',
+  modify: false,
+  submit: true
+};
+      ```
+      ```javascript
+// Custom order
+const customOrder = {
+  products: ['item1', 'item2'],
+  quantities: [10, 5],
+  delivery: 'express'
+};
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Account Management
+
+Manage your professional account and order history.
+
+| Feature | Description | Benefits |
+|---------|-------------|----------|
+| Order History | View past orders | Easy reordering |
+| Preferences | Save shipping addresses | Faster checkout |
+| Alerts | Product availability notifications | Stay informed |
+
+<Callout kind="tip">Set up account preferences to streamline future orders.</Callout>
+
+## Shipping and Delivery
+
+Reliable delivery options for dental practices.
+
+<Expandable title="Shipping Options" default-open="false">
+  Choose from standard or express delivery:
+  - Standard: 3-5 business days
+  - Express: 1-2 business days
+  - Overnight: Next business day
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="International Shipping" default-open="false">
+    Special arrangements for international orders.
+  </Expandable>
+  <Expandable title="Tracking" default-open="false">
+    Real-time shipment tracking and updates.
+  </Expandable>
+</ExpandableGroup>
+
+## Support
+
+Dedicated support for ordering and account questions.
+
+<Update label="2024-07-01" description="Ordering Update" tags={["improvement"]}>
+## Ordering Improvements
+- Enhanced online portal
+- Faster processing times
+- Improved tracking system
+</Update>

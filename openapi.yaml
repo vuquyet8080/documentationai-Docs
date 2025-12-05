@@ -1,0 +1,162 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Zila API
+  license:
+    name: MIT
+servers:
+  - url: https://api.zila.com/v1
+paths:
+  /products:
+    get:
+      summary: List all products
+      operationId: listProducts
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An paged array of products
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new product entry for inventory management
+      operationId: createProduct
+      responses:
+        201:
+          description: Product created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /products/{productId}:
+    get:
+      summary: Retrieve detailed information about a specific product
+      operationId: showProductById
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: The unique identifier of the product to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed product information including specifications and usage guidelines
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /orders:
+    get:
+      summary: Retrieve a list of all orders placed by dental professionals
+      operationId: listOrders
+      parameters:
+        - name: status
+          in: query
+          description: Filter orders by status (pending, shipped, delivered)
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: A paginated list of orders with details including products and shipping information
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Orders'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Submit a new order for Zila products with specified quantities and delivery preferences
+      operationId: createOrder
+      responses:
+        201:
+          description: Order successfully created and processing initiated
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Product:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        category:
+          type: string
+    Products:
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+    Order:
+      required:
+        - id
+        - products
+      properties:
+        id:
+          type: integer
+          format: int64
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        status:
+          type: string
+    Orders:
+      type: array
+      items:
+        $ref: '#/components/schemas/Order'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
